@@ -1,0 +1,30 @@
+# Sign up at pvoutput.org and set up your system definition.
+# Visit the settings page, scroll to the bottom.
+# Generate an API Key, save, enable API Access, save.
+# Make a note of your API Key and System ID.
+
+# Add this to configuration.yaml in Home Assistant
+# Make sure you edit all sensor names to match your own entities
+# Reboot Home Assistant!
+rest_command:
+  update_pvoutput:
+    url: https://pvoutput.org/service/r2/addstatus.jsp
+    method: post
+    content_type: "application/x-www-form-urlencoded"
+    headers:
+        X-Pvoutput-Apikey: PVOUTPUT_API_KEY
+        X-Pvoutput-SystemId: PVOUTPUT_SYSTEM_ID
+    payload: "d={{now().strftime('%Y%m%d')}}&t={{now().strftime('%H:%M')}}&v1={{((states('sensor.givtcp_pv_energy_today_kwh')|float(default=0))*1000)|int}}&v2={{(states('sensor.givtcp_pv_power'))|round(0)}}&v3={{((states('sensor.givtcp_self_consumption_energy_today_kwh')|float(default=0))*1000)|int}}&v4={{(states('sensor.givtcp_load_power'))|round(0)}}&v6={{(states('sensor.givtcp_grid_voltage'))|round(0)}}"
+
+
+# Create a new automation and use the following YAML
+alias: PVOutput for GivTCP - Update System
+description: ""
+trigger:
+  - platform: time_pattern
+    minutes: "/15"
+condition: []
+action:
+  - service: rest_command.update_pvoutput
+    data: {}
+mode: single
