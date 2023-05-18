@@ -14,7 +14,7 @@ rest_command:
     headers:
         X-Pvoutput-Apikey: PVOUTPUT_API_KEY
         X-Pvoutput-SystemId: PVOUTPUT_SYSTEM_ID
-    payload: "d={{now().strftime('%Y%m%d')}}&t={{now().strftime('%H:%M')}}&v1={{((states('sensor.givtcp_pv_energy_today_kwh')|float(default=0))*1000)|int}}&v2={{(states('sensor.givtcp_pv_power'))|round(0)}}&v3={{((states('sensor.givtcp_self_consumption_energy_today_kwh')|float(default=0))*1000)|int}}&v4={{(states('sensor.givtcp_load_power'))|round(0)}}&v6={{(states('sensor.givtcp_grid_voltage'))|round(0)}}"
+    payload: "d={{now().strftime('%Y%m%d')}}&t={{now().strftime('%H:%M')}}&v1={{((states('sensor.givtcp_pv_energy_today_kwh')|float(default=0))*1000)|int}}&v2={{(states('sensor.givtcp_pv_power'))|round(0)}}&v3={{((states('sensor.givtcp_load_energy_today_kwh')|float(default=0))*1000)|int}}&v4={{(states('sensor.givtcp_load_power'))|round(0)}}&v6={{(states('sensor.givtcp_grid_voltage'))|round(0)}}"
 
 
 # Create a new automation and use the following YAML
