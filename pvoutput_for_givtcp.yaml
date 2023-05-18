@@ -6,6 +6,7 @@
 
 # Add this to configuration.yaml in Home Assistant
 # Make sure you edit all sensor names to match your own entities
+# Change PVOUTPUT_API_KEY and PVOUTPUT_SYSTEM_ID (twice!) to match your actual API key and system ID
 # Reboot Home Assistant!
 rest_command:
   update_pvoutput:
