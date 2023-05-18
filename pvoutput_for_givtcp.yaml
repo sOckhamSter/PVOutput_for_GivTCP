@@ -32,7 +32,9 @@ description: ""
 trigger:
   - platform: time_pattern
     minutes: "/2"
-condition: []
+condition:
+  - condition: time
+    before: "23:45:00"
 action:
   - service: rest_command.update_pvoutput
     data: {}
