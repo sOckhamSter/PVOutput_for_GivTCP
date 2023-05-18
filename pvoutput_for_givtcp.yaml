@@ -26,12 +26,12 @@ rest_command:
     payload: "d={{now().strftime('%Y%m%d')}}&g={{((states('sensor.givtcp_pv_energy_today_kwh')|float(default=0))*1000)|int}}&e={{((states('sensor.givtcp_export_energy_today_kwh')|float(default=0))*1000)|int}}"
 
 # Create a new automation and use the following YAML
-# This runs every 15 minutes and uploads your live data
+# This runs every 2 minutes and uploads your live data
 alias: PVOutput for GivTCP - Update System
 description: ""
 trigger:
   - platform: time_pattern
-    minutes: "/15"
+    minutes: "/2"
 condition: []
 action:
   - service: rest_command.update_pvoutput
