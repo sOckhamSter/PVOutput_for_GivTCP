@@ -55,3 +55,5 @@ action:
 mode: single
 
 # Join the GivEnergy team: https://pvoutput.org/listteam.jsp?tid=1694
+# You need at least 5 'outputs' (or days) of data to be able to join a team
+# It's possible to bodge around that by manually adding 'Outputs' for previous days.
